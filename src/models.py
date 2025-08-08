@@ -24,6 +24,9 @@ class User(db.Model):
     This model represents users in the social media platform.
     Each user can create posts, comment on posts, and follow other users.
     Uses modern SQLAlchemy 2.x syntax with explicit typing.
+
+    This creates a python dictionary representation of the user model.
+    They store data in Key : value pairs.
     """
 
     # Explicitly define table name (good practice for clarity)
@@ -34,6 +37,12 @@ class User(db.Model):
 
     # Email field - must be unique across all users and cannot be null
     email: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
+
+    # First and last names - required for user profiles
+    first_name: Mapped[str] = mapped_column(String(100), nullable=False)
+
+    # Last name - required for user profiles
+    last_name: Mapped[str] = mapped_column(String(100), nullable=False)
 
     # Password hash - stores encrypted password (never store plain text!)
     password: Mapped[str] = mapped_column(String(128), nullable=False)
@@ -65,6 +74,21 @@ class User(db.Model):
         back_populates="follower_user",
         cascade="all, delete-orphan"
     )
+
+    def to_json(self):
+        """
+        Convert user data to JSON-compatible format.
+
+        Returns:
+            dict: User data in JSON format
+        """
+        return {
+            "id": self.id,
+            "email": self.email,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "is_active": self.is_active
+        }
 
     def serialize(self):
         """
@@ -119,16 +143,14 @@ class Post(db.Model):
 
     def serialize(self):
         """
-        Serialize post data to dictionary format for JSON responses.
-
-        Returns:
-            dict: Post data including all public fields
+       Create a function to serialize post data to a dictionary format.
         """
         return {
             "id": self.id,
-            "user_id": self.user_id,  # Author's user ID
-            "image_url": self.image_url,  # Link to the image
-            "caption": self.caption  # Post description (may be null)
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "is_active": self.is_active
         }
 
 

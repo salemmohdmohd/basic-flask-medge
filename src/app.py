@@ -8,10 +8,15 @@ using the app factory pattern with extensions.
 
 from flask import Flask
 from extensions import db
+# Uncomment the next line when you're ready to add API endpoints
+# from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Uncomment the next line when you're ready to add API endpoints
+# CORS(app)  # This enables CORS for all domains on all routes
 
 db.init_app(app)
 

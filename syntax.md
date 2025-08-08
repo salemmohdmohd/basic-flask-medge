@@ -1,13 +1,3 @@
----
-slug: everything-you-need-to-start-using-sqlalchemy
-tags:
-  - SQL Alchemy
-  - Python
-description: >-
-  Discover how to use SQLAlchemy, the most popular ORM for Python. Learn to
-  handle databases easily in just 8 minutes. Start now!
----
-
 ## What is SQL Alchemy?
 
 SQLAlchemy is an [Object-Relational Mapper/Mapping-tool](https://en.wikipedia.org/wiki/Object-relational_mapping), or ORM, a library that developers use to create databases and manipulate their data without needing to know/use SQL.
@@ -428,13 +418,3 @@ When a record in Table A must be linked to exactly one record in Table B.
 | **One-to-One**    | `uselist=False` in relationship                 | `Mapped["Profile"]` without list                               | More intuitive syntax, better documentation |
 | **Configuration** | Implicit in backref                             | Explicit with back_populates                                   | Clearer and more maintainable relationships |
 | **Typing**        | No native support                               | Typing with `Mapped[T]`                                        | Better static analysis, autocompletion      |
-
-> 💡 **Tip**: The modern method is compatible with Flask-SQLAlchemy 3.x and offers better performance and long-term maintainability.
-
-With SQLAlchemy, you can connect your models like LEGO pieces (but without the pain of stepping on one barefoot 😆). Whether it's 1:1 (like a phone and its owner), 1:N (like a meme and its thousands of shares), or N:M (like your favorite shows and your sleepless nights), the ORM has you covered!
-
-Now go write queries as if the code documented itself! 🦸‍♂️💻
-
-(And remember: if your code works on the first try, it's time to be suspicious... or celebrate with coffee ☕).
-
-Ready for the next level? SQLAlchemy awaits! 😉

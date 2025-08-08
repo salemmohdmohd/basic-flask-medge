@@ -1,7 +1,8 @@
 [MESSAGES CONTROL]
-# Disable specific warnings for SQLAlchemy models
+# Disable specific warnings for SQLAlchemy models and API endpoints
 disable=too-few-public-methods,
-        import-error
+        import-error,
+        broad-exception-caught
 
 [BASIC]
 # Good variable names which should always be accepted, separated by a comma
