@@ -231,31 +231,3 @@ class Follower(db.Model):
             "user_from_id": self.user_from_id,  # Who is following
             "user_to_id": self.user_to_id       # Who is being followed
         }
-
-# DATABASE RELATIONSHIP SUMMARY (Modern SQLAlchemy 2.x Style):
-#
-# Users ←→ Posts: One-to-Many (One user can have many posts)
-#   - User.posts: Mapped[List["Post"]] = relationship(back_populates="author")
-#   - Post.author: Mapped["User"] = relationship(back_populates="posts")
-#
-# Users ←→ Comments: One-to-Many (One user can write many comments)
-#   - User.comments: Mapped[List["Comment"]] = relationship(back_populates="author")
-#   - Comment.author: Mapped["User"] = relationship(back_populates="comments")
-#
-# Posts ←→ Comments: One-to-Many (One post can have many comments)
-#   - Post.comments: Mapped[List["Comment"]] = relationship(back_populates="post")
-#   - Comment.post: Mapped["Post"] = relationship(back_populates="comments")
-#
-# Users ←→ Followers: Many-to-Many via junction table (Users can follow each other)
-#   - User.followers: Mapped[List["Follower"]] = relationship(foreign_keys="Follower.user_to_id")
-#   - User.following: Mapped[List["Follower"]] = relationship(foreign_keys="Follower.user_from_id")
-#   - Follower.follower_user: Mapped["User"] = relationship(foreign_keys=[user_from_id])
-#   - Follower.followed_user: Mapped["User"] = relationship(foreign_keys=[user_to_id])
-#
-# Key Modern SQLAlchemy 2.x Features Used:
-# ✅ Mapped[T] type annotations for all fields and relationships
-# ✅ relationship() function instead of db.relationship()
-# ✅ back_populates instead of backref for bidirectional relationships
-# ✅ Direct ForeignKey import instead of db.ForeignKey
-# ✅ List typing for one-to-many relationships
-# ✅ Explicit foreign_keys specification for complex relationships
