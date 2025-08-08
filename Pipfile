@@ -12,6 +12,7 @@ python-dotenv = "*"
 flask-migrate = "*"
 
 [dev-packages]
+pylint = "*"
 
 [scripts]
 init-db = "python src/app.py"
