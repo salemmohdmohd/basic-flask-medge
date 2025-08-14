@@ -1,4 +1,22 @@
+## Steps to generate the UML diagram.
+
+- python3 -m venv venv
+- source .venv/bin/activate
+- pip install -r requirements.txt
+- python3 generate_diagram.py
+
 # UML and Database Design Guide from class.
+
+##
+
+typing
+flask
+flask_sqlalchemy
+sqlalchemy
+ForeignKey, String
+sqlalchemy.orm import
+Mapped, mapped_column, relationship
+db
 
 ## What is UML?
 
